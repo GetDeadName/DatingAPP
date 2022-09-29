@@ -1,5 +1,6 @@
 
 using System.Text;
+using System.Text.Json.Serialization;
 using API.Data;
 using API.Extensions;
 using API.Interfaces;
@@ -28,6 +29,8 @@ namespace API
             services.AddControllers();
             services.AddCors();
             services.AddIdentityServices(_config);
+            //   services.AddControllers().AddJsonOptions(x =>
+            //     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +53,8 @@ namespace API
             {
                 endpoints.MapControllers();
             });
+
+          
         }
     }
 }
