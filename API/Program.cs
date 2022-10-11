@@ -8,9 +8,13 @@ namespace API
 {
     public class Program
     {
+        
    
         public static async Task Main(string[] args)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true); 
+            //error:  DateTime with Kind=Unspecified to PostgreSQL type 'timestamp with time zone'
+
             var host = CreateHostBuilder(args).Build();
             using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
